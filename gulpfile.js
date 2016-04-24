@@ -8,11 +8,14 @@ const connect      = require('gulp-connect');
 const minifyCss    = require('gulp-minify-css');
 const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
+const streamify    = require('gulp-streamify');
 const uglify       = require('gulp-uglify');
+const source       = require('vinyl-source-stream');
 
 gulp.task('styles', function() {
-  gulp.src(['src/styles/**/*.scss'])
+  gulp.src(['src/styles/*.scss'])
     .pipe(concat('app.css'))
+    .pipe(sass())
     .pipe(autoprefixer('last 2 versions'))
     .pipe(gulp.dest('public/css/'))
     .pipe(rename({suffix: '.min'}))
@@ -20,20 +23,18 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('public/css/'))
 });
 
-gulp.task('babelify', function() {
-  // pending...
-});
-
 gulp.task('scripts', function() {
-  gulp.src(['src/scripts/**/*.js'])
-    .pipe(concat('app.js'))
+  browserify("src/scripts/index.js")
+    .transform("babelify", {presets: ["es2015"]})
+    .bundle()
+    .pipe(source('app.js'))
     .pipe(gulp.dest('public/js/'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .pipe(gulp.dest('public/js/'))
+    .pipe(streamify(uglify()))
+    .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('build', ['styles', 'babelify', 'scripts']);
+gulp.task('build', ['styles', 'scripts']);
 
 gulp.task('server', function() {
   connect.server({
