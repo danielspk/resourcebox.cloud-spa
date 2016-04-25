@@ -32,6 +32,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "alertify.js": "^1.0.10",
     "delegate": "^3.0.1",
     "event-emitter": "^0.3.4",
     "handlebars": "^4.0.5",

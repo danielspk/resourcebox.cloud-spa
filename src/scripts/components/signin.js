@@ -1,5 +1,11 @@
 'use strict';
 
+// dependencies
+import alertify from 'alertify.js';
+
+// exceptions
+import ValidationException from './../exceptions/validation';
+
 //components
 import Base from './base';
 
@@ -40,7 +46,12 @@ class Signin extends Base {
     //@todo: validator
     const accountId = document.querySelector('.signin form input[name="account_id"]');
     const accountSecret = document.querySelector('.signin form input[name="account_secret"]');
-    this.hideErrors();
+    if (!accountId.value) {
+      return this.showError('Empty account id');
+    }
+    if (!accountSecret.value) {
+      return this.showError('Empty account secret');
+    }
     fetch(this.URL + '/oauth/token', {
       method: 'POST',
       headers: {
@@ -53,26 +64,25 @@ class Signin extends Base {
       })
     })
       .then((response) => {
-        if (response.status !== 201) {
-          throw response.status;
-        }
         return response.json();
       })
       .then((json) => {
+        if (json.status !== 201) {
+          throw new ValidationException(json.status, (json.status == 400) ? 'ID / SECRET is invalid' : 'Unknown error');
+        }
         this.eventEmitter.emit('sigin.authenticate', json);
       })
       .catch((err) => {
-        if (err === 400) {
-          //return showErrors();
+        if (!(err instanceof ValidationException)) {
+          return this.showError('Connection error');
         }
-        showErrors({ errors: [{ message: 'Error authentication.' }] });
+        this.showError(err.message);
       });
   }
-  showErrors(errors) {
-    //@todo: pending...
-  }
-  hideErrors() {
-    //@todo: pending...
+  showError(message) {
+    alertify.logPosition('top right');
+    alertify.maxLogItems(1);
+    alertify.error(message);
   }
 }
 
