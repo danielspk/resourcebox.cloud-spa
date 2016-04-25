@@ -1,5 +1,9 @@
 'use strict';
 
+// polyfills
+import 'whatwg-fetch';
+
+// main controller
 import App from './app.js';
 
 window.onload = () => {

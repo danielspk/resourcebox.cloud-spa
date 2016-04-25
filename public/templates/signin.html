@@ -8,12 +8,17 @@
   <div class="form-container">
     <form>
       <div class="input-container">
-        <input type="text" placeholder="ID">
-        <input type="password" placeholder="SECRET">
+        <input type="text" name="account_id" placeholder="ID">
+        <input type="password" name="account_secret" placeholder="SECRET">
       </div>
       <div class="button-container">
-        <button><img src="img/arrow.png"></button>
+        <button type="button"><img src="img/arrow.png"></button>
       </div>
     </form>
+    <div class="errors">
+      {{#each errors}}
+        <h2>{{message}}</h2>
+      {{/each}}
+    </div>
   </div>
 </div>
