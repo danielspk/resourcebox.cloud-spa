@@ -6,4 +6,5 @@ class ValidationException {
     this.message = message;
   }  
 }
+
 module.exports = ValidationException;

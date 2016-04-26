@@ -70,6 +70,8 @@ class Signin extends Base {
         if (json.status !== 201) {
           throw new ValidationException(json.status, (json.status == 400) ? 'ID / SECRET is invalid' : 'Unknown error');
         }
+        sessionStorage.setItem('token', json.access_token);
+        sessionStorage.setItem('refresh_token', json.refresh_token);
         this.eventEmitter.emit('sigin.authenticate', json);
       })
       .catch((err) => {
