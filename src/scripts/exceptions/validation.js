@@ -1,9 +1,11 @@
 'use strict';
 
-class ValidationException {
+//components
+import BaseException from './base';
+
+class ValidationException extends BaseException {
   constructor(code, message) {
-    this.code = code;
-    this.message = message;
+    super(code, message);
   }  
 }
 

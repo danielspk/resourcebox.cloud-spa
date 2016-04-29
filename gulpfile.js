@@ -5,12 +5,23 @@ const gulp         = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const concat       = require('gulp-concat');
 const connect      = require('gulp-connect');
+const imagemin     = require('gulp-imagemin');
 const minifyCss    = require('gulp-minify-css');
 const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
 const streamify    = require('gulp-streamify');
 const uglify       = require('gulp-uglify');
 const source       = require('vinyl-source-stream');
+
+gulp.task('images', function() {
+  gulp.src(['src/images/**/*'])
+    .pipe(imagemin({
+      progressive: true,
+      interlaced: true,
+      multipass: true
+    }))
+    .pipe(gulp.dest('public/img/'))
+});
 
 gulp.task('styles', function() {
   gulp.src(['src/styles/*.scss'])
@@ -34,7 +45,7 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('build', ['styles', 'scripts']);
+gulp.task('build', ['images', 'styles', 'scripts']);
 
 gulp.task('server', function() {
   connect.server({
@@ -44,6 +55,7 @@ gulp.task('server', function() {
 });
 
 gulp.task('default', ['server'], function(){
+  gulp.watch('src/images/**/*', { debounceDelay: 3000 }, ['images']);
   gulp.watch('src/styles/**/*.scss', { debounceDelay: 3000 }, ['styles']);
   gulp.watch('src/scripts/**/*.js', { debounceDelay: 3000 }, ['scripts']);
 });

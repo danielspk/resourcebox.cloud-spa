@@ -1,6 +1,7 @@
 'use strict';
 
-// polyfills
+// client dependencies and polyfills
+import 'downloadjs';
 import 'whatwg-fetch';
 
 // main controller

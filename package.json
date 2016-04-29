@@ -23,7 +23,8 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
-    "gulp-connect": "^3.2.2",
+    "gulp-connect": "^4.0.0",
+    "gulp-imagemin": "^2.4.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.1",
@@ -34,8 +35,9 @@
   "dependencies": {
     "alertify.js": "^1.0.10",
     "delegate": "^3.0.1",
+    "downloadjs": "^1.4.2",
     "event-emitter": "^0.3.4",
     "handlebars": "^4.0.5",
-    "whatwg-fetch": "^0.11.0"
+    "whatwg-fetch": "^1.0.0"
   }
 }

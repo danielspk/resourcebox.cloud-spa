@@ -43,7 +43,6 @@ class Signin extends Base {
     this.evSiginButton.destroy();
   }
   authenticate() {
-    //@todo: validator
     const accountId = document.querySelector('.signin form input[name="account_id"]');
     const accountSecret = document.querySelector('.signin form input[name="account_secret"]');
     if (!accountId.value) {
