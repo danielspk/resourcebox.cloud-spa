@@ -1,6 +1,6 @@
 'use strict';
 
-//components
+// components
 import Base from './base';
 
 class Detail extends Base {

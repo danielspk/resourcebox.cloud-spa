@@ -6,7 +6,7 @@ import alertify from 'alertify.js';
 // exceptions
 import ValidationException from './../exceptions/validation';
 
-//components
+// components
 import Base from './base';
 
 class Signin extends Base {
