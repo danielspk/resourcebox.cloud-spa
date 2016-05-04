@@ -1,0 +1,27 @@
+{
+  "name": "resourcebox.cloud-spa",
+  "description": "Single Page Application for http://resourcebox.cloud accounts.",
+  "main": "dist/index.html",
+  "authors": [
+    "Daniel M. Spiridione"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "resourcebox.cloud",
+    "spa"
+  ],
+  "homepage": "https://github.com/danielspk/resourcebox.cloud-spa",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "daemonite-material": "^1.4.0",
+    "jquery": "^2.2.3",
+    "fetch": "^1.0.0"
+  }
+}

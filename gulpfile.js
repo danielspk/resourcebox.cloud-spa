@@ -6,7 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const concat       = require('gulp-concat');
 const connect      = require('gulp-connect');
 const imagemin     = require('gulp-imagemin');
-const minifyCss    = require('gulp-minify-css');
+const minifycss    = require('gulp-minify-css');
 const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
 const streamify    = require('gulp-streamify');
@@ -20,42 +20,65 @@ gulp.task('images', function() {
       interlaced: true,
       multipass: true
     }))
-    .pipe(gulp.dest('public/img/'))
+    .pipe(gulp.dest('dist/img/'))
 });
 
 gulp.task('styles', function() {
-  gulp.src(['src/styles/*.scss'])
-    .pipe(concat('app.css'))
+  gulp.src(['src/styles/base.scss'])
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
-    .pipe(gulp.dest('public/css/'))
+    .pipe(gulp.dest('.tmp/css/'))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(minifyCss())
-    .pipe(gulp.dest('public/css/'))
+    .pipe(minifycss())
+    .pipe(gulp.dest('dist/css/'))
 });
 
-gulp.task('scripts', function() {
+gulp.task('browserify', function() {
   browserify("src/scripts/index.js")
     .transform("babelify", { presets: ["es2015"] })
     .bundle()
     .pipe(source('app.js'))
-    .pipe(gulp.dest('public/js/'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(streamify(uglify()))
-    .pipe(gulp.dest('public/js'));
+    .pipe(gulp.dest('.tmp/js/'))
+    //.pipe(rename({ suffix: '.min' }))
+    //.pipe(streamify(uglify()))
+    //.pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('build', ['images', 'styles', 'scripts']);
+gulp.task('scripts', ['browserify'], function() {
+  gulp.src([
+    'src/bower_components/fetch/fetch.js',
+    'src/bower_components/jquery/dist/jquery.js',
+    'src/bower_components/daemonite-material/js/base.js',
+    '.tmp/js/app.js'
+    ])
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('.tmp/js/'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(streamify(uglify()))
+    .pipe(gulp.dest('dist/js'));
+});
 
-gulp.task('server', function() {
+gulp.task('templates', function() {
+  return gulp.src('src/templates/**/*.html')
+    .pipe(gulp.dest('dist/templates'));
+});
+
+gulp.task('fonts', function() {
+  gulp.src(['src/bower_components/daemonite-material/css/fonts/*.{eot,ijmap,svg,ttf,woff,woff2}'])
+    .pipe(gulp.dest('dist/fonts/'))
+});
+
+gulp.task('build', ['styles', 'scripts', 'templates', 'fonts', 'images']);
+
+gulp.task('serve', function() {
   connect.server({
-    root: ['public'],
+    root: ['dist'],
     port: process.env.PORT || 3000
   });
 });
 
-gulp.task('default', ['server'], function(){
-  gulp.watch('src/images/**/*', { debounceDelay: 3000 }, ['images']);
+gulp.task('default', ['serve'], function(){
   gulp.watch('src/styles/**/*.scss', { debounceDelay: 3000 }, ['styles']);
   gulp.watch('src/scripts/**/*.js', { debounceDelay: 3000 }, ['scripts']);
+  gulp.watch('src/templates/**/*.html', { debounceDelay: 3000 }, ['templates']);
 });

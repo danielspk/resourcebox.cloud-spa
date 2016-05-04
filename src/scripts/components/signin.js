@@ -1,8 +1,5 @@
 'use strict';
 
-// dependencies
-import alertify from 'alertify.js';
-
 // exceptions
 import ValidationException from './../exceptions/validation';
 
@@ -81,9 +78,7 @@ class Signin extends Base {
       });
   }
   showError(message) {
-    alertify.logPosition('top right');
-    alertify.maxLogItems(1);
-    alertify.error(message);
+    $("body").snackbar({ content: message }); //@todo: no usar jquery
   }
 }
 

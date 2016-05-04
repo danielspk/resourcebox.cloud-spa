@@ -1,39 +1,12 @@
+@charset "UTF-8";
+
+// fonts
+//@import url(http://fonts.googleapis.com/icon?family=Material+Icons);
+
+// theme
+@import './../bower_components/daemonite-material/assets/sass/base';
+
+// colors
 @import './includes/colors';
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600,700);
 
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  overflow: hidden;
-}
-body {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: $primary-text-color;
-  background-color: $primary-color;
-}
-
-main {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-}
-
-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-  color: rgba(255,255,255,.7);
-}
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: rgba(255,255,255,.7);
-}
-input::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: rgba(255,255,255,.7);
-}
-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: rgba(255,255,255,.7);
-}
+// components
