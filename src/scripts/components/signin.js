@@ -1,7 +1,5 @@
 'use strict';
 
-import $ from 'jquery';
-
 // exceptions
 import ValidationException from './../exceptions/validation';
 
@@ -80,7 +78,7 @@ class Signin extends Base {
       });
   }
   showError(message) {
-    $("body").snackbar({ content: message }); //@todo: no usar jquery
+    $("body").snackbar({ content: message });
   }
 }
 

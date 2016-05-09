@@ -1,6 +1,5 @@
 'use strict';
 
-const browserify   = require('browserify');
 const gulp         = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const concat       = require('gulp-concat');
@@ -35,14 +34,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('scripts', function() {
-  /*browserify("src/scripts/index.js")
-    .transform("babelify", { presets: ["es2015"] })
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(gulp.dest('.tmp/js/'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(streamify(uglify()))
-    .pipe(gulp.dest('dist/js'));*/
+  //@todo: --optimize-minimize
   return gulp.src('src/scripts/index.js')
     .pipe(webpack( require('./webpack.config.js') ))
     .pipe(gulp.dest('dist/js'));
@@ -54,7 +46,7 @@ gulp.task('templates', function() {
 });
 
 gulp.task('fonts', function() {
-  gulp.src(['src/bower_components/daemonite-material/css/fonts/*.{eot,ijmap,svg,ttf,woff,woff2}'])
+  return gulp.src(['node_modules/daemonite-material/css/fonts/*.{eot,ijmap,svg,ttf,woff,woff2}'])
     .pipe(gulp.dest('dist/fonts/'))
 });
 

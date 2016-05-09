@@ -1,7 +1,6 @@
 'use strict';
 
 // global
-import 'jquery';
 import 'daemonite-material';
 import 'whatwg-fetch';
 
