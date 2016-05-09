@@ -40,7 +40,9 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('templates', function() {
-  return gulp.src('src/templates/**/*.html')
+  gulp.src('src/index.html')
+    .pipe(gulp.dest('dist'));
+  gulp.src('src/templates/**/*.html')
     .pipe(gulp.dest('dist/templates'));
 });
 
@@ -61,5 +63,5 @@ gulp.task('serve', function() {
 gulp.task('default', ['serve'], function(){
   gulp.watch('src/styles/**/*.scss', { debounceDelay: 3000 }, ['styles']);
   gulp.watch('src/scripts/**/*.js', { debounceDelay: 3000 }, ['scripts']);
-  gulp.watch('src/templates/**/*.html', { debounceDelay: 3000 }, ['templates']);
+  gulp.watch('src/**/*.html', { debounceDelay: 3000 }, ['templates']);
 });
