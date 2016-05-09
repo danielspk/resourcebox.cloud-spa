@@ -1,5 +1,7 @@
 'use strict';
 
+import $ from 'jquery';
+
 // exceptions
 import ValidationException from './../exceptions/validation';
 

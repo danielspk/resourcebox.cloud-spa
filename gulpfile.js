@@ -11,10 +11,11 @@ const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
 const streamify    = require('gulp-streamify');
 const uglify       = require('gulp-uglify');
+const webpack      = require('gulp-webpack');
 const source       = require('vinyl-source-stream');
 
 gulp.task('images', function() {
-  gulp.src(['src/images/**/*'])
+  return gulp.src(['src/images/**/*'])
     .pipe(imagemin({
       progressive: true,
       interlaced: true,
@@ -24,7 +25,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('styles', function() {
-  gulp.src(['src/styles/base.scss'])
+  return gulp.src(['src/styles/base.scss'])
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
     .pipe(gulp.dest('.tmp/css/'))
@@ -33,28 +34,17 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist/css/'))
 });
 
-gulp.task('browserify', function() {
-  browserify("src/scripts/index.js")
+gulp.task('scripts', function() {
+  /*browserify("src/scripts/index.js")
     .transform("babelify", { presets: ["es2015"] })
     .bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest('.tmp/js/'))
-    //.pipe(rename({ suffix: '.min' }))
-    //.pipe(streamify(uglify()))
-    //.pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('scripts', ['browserify'], function() {
-  gulp.src([
-    'src/bower_components/fetch/fetch.js',
-    'src/bower_components/jquery/dist/jquery.js',
-    'src/bower_components/daemonite-material/js/base.js',
-    '.tmp/js/app.js'
-    ])
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest('.tmp/js/'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(streamify(uglify()))
+    .pipe(gulp.dest('dist/js'));*/
+  return gulp.src('src/scripts/index.js')
+    .pipe(webpack( require('./webpack.config.js') ))
     .pipe(gulp.dest('dist/js'));
 });
 

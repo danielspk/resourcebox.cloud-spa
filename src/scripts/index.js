@@ -1,5 +1,10 @@
 'use strict';
 
+// global
+import 'jquery';
+import 'daemonite-material';
+import 'whatwg-fetch';
+
 // main controller
 import App from './app.js';
 
