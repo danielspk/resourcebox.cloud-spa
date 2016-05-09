@@ -27,7 +27,6 @@ gulp.task('styles', function() {
   return gulp.src(['src/styles/base.scss'])
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
-    .pipe(gulp.dest('.tmp/css/'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
     .pipe(gulp.dest('dist/css/'))
