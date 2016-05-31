@@ -6,6 +6,7 @@ dist/fonts/*
 dist/img/*
 dist/js/*
 dist/templates/*
+dist/index.html
 
 !dist/css/.gitkeep
 !dist/fonts/.gitkeep

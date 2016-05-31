@@ -14,6 +14,7 @@ module.exports = {
       {
         test: /\.js?$/i,
         loader: 'babel',
+        exclude: /node_modules/,
         query: {
           presets: ['es2015']
         }
