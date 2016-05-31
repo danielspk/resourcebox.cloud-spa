@@ -1,9 +1,11 @@
 'use strict';
 
-// main controller
-import App from './app.js';
+// dependencies
+import riot from 'riot';
+
+// tags
+import loginTag from './tags/login.tag';
 
 window.onload = () => {
-  const main = document.querySelector('main');
-  new App(main).init();
+  riot.mount(loginTag);
 };

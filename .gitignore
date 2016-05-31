@@ -6,18 +6,15 @@ tmp/*
 !tmp/.gitkeep
 
 dist/css/*
-!dist/css/.gitkeep
+dist/css/fonts/*
 
-dist/fonts/*
-!dist/fonts/.gitkeep
+!dist/css/.gitkeep
+!dist/css/fonts/.gitkeep
 
 dist/img/*
 !dist/img/.gitkeep
 
 dist/js/*
 !dist/js/.gitkeep
-
-dist/templates/*
-!dist/templates/.gitkeep
 
 dist/index.html

@@ -11,6 +11,7 @@ const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
 const streamify    = require('gulp-streamify');
 const uglify       = require('gulp-uglify');
+const riotify      = require('riotify');
 const source       = require('vinyl-source-stream');
 
 gulp.task('images', function() {
@@ -34,11 +35,8 @@ gulp.task('styles', function() {
 
 gulp.task('browserify', function() {
   return browserify('src/scripts/index.js')
-    .external([
-      './node_modules/jquery/dist/jquery.js2',
-      './node_modules/daemonite-material/js/base.js'
-    ])
-    .transform('babelify', { presets: ['es2015'] })
+    .transform('babelify', { presets: ['es2015-riot'] })
+    .transform(riotify)
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('tmp'));
@@ -56,19 +54,14 @@ gulp.task('scripts', ['browserify'], function() {
     .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('templates', function() {
-  return gulp.src('src/templates/**/*.html')
-    .pipe(gulp.dest('dist/templates'));
-});
-
-gulp.task('html', ['templates'], function() {
+gulp.task('html', function() {
   return gulp.src('src/index.html')
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('fonts', function() {
   return gulp.src(['node_modules/daemonite-material/css/fonts/*.{eot,ijmap,svg,ttf,woff,woff2}'])
-    .pipe(gulp.dest('dist/fonts/'))
+    .pipe(gulp.dest('dist/css/fonts/'))
 });
 
 gulp.task('build', ['styles', 'scripts', 'html', 'fonts', 'images']);
@@ -83,5 +76,6 @@ gulp.task('serve', function() {
 gulp.task('default', ['serve'], function(){
   gulp.watch('src/styles/**/*.scss', { debounceDelay: 3000 }, ['styles']);
   gulp.watch('src/scripts/**/*.js', { debounceDelay: 3000 }, ['scripts']);
-  gulp.watch('src/**/*.html', { debounceDelay: 3000 }, ['templates']);
+  gulp.watch('src/scripts/tags/**/*.tag', { debounceDelay: 3000 }, ['scripts']);
+  gulp.watch('src/**/*.html', { debounceDelay: 3000 }, ['html']);
 });

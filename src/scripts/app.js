@@ -29,7 +29,7 @@ class App {
 
     });
     this.page('/resourceDetail', () => {
-      
+
     });
     this.page({ hashbang: true });
   }
