@@ -1,5 +1,6 @@
 'use strict';
 
+const browserify   = require('browserify');
 const gulp         = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const concat       = require('gulp-concat');
@@ -10,7 +11,6 @@ const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
 const streamify    = require('gulp-streamify');
 const uglify       = require('gulp-uglify');
-const webpack      = require('gulp-webpack');
 const source       = require('vinyl-source-stream');
 
 gulp.task('images', function() {
@@ -32,18 +32,38 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist/css/'))
 });
 
-gulp.task('scripts', function() {
-  //@todo: --optimize-minimize
-  return gulp.src('src/scripts/index.js')
-    .pipe(webpack( require('./webpack.config.js') ))
+gulp.task('browserify', function() {
+  return browserify('src/scripts/index.js')
+    .external([
+      './node_modules/jquery/dist/jquery.js2',
+      './node_modules/daemonite-material/js/base.js'
+    ])
+    .transform('babelify', { presets: ['es2015'] })
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest('tmp'));
+});
+
+gulp.task('scripts', ['browserify'], function() {
+  return gulp.src([
+      'node_modules/whatwg-fetch/fetch.js',
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/daemonite-material/js/base.js',
+      'tmp/bundle.js'
+    ])
+    .pipe(concat('app.min.js'))
+    .pipe(streamify(uglify()))
     .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('templates', function() {
-  gulp.src('src/index.html')
-    .pipe(gulp.dest('dist'));
-  gulp.src('src/templates/**/*.html')
+  return gulp.src('src/templates/**/*.html')
     .pipe(gulp.dest('dist/templates'));
+});
+
+gulp.task('html', ['templates'], function() {
+  return gulp.src('src/index.html')
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('fonts', function() {
@@ -51,7 +71,7 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('dist/fonts/'))
 });
 
-gulp.task('build', ['styles', 'scripts', 'templates', 'fonts', 'images']);
+gulp.task('build', ['styles', 'scripts', 'html', 'fonts', 'images']);
 
 gulp.task('serve', function() {
   connect.server({
