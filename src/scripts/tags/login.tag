@@ -1,6 +1,6 @@
 <dsp-login>
   <header class="header header-brand ui-header">
-		<span class="header-logo">Demo</span>
+		<span class="header-logo">Resourcebox Accounts</span>
 	</header>
   <div class="container">
 		<div class="row">
@@ -70,7 +70,6 @@
 
   <script type="babel">
     console.log('dsp-login tag')
-    let pepe = 'pepe2'
   </script>
 
 </dsp-login>
