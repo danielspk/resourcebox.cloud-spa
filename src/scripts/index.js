@@ -4,8 +4,8 @@
 import riot from 'riot';
 
 // tags
-import loginTag from './tags/login.tag';
+import signinTag from './tags/signin.tag';
 
 window.onload = () => {
-  riot.mount(loginTag);
+  riot.mount(signinTag);
 };

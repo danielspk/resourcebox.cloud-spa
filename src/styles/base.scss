@@ -1,12 +1,10 @@
 @charset "UTF-8";
 
-// fonts
-//@import url(http://fonts.googleapis.com/icon?family=Material+Icons);
-
 // theme
 @import 'node_modules/daemonite-material/assets/sass/base';
 
 // colors
 @import './includes/colors';
 
-// components
+// tags
+@import './tags/signin';

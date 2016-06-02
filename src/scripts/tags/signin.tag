@@ -1,4 +1,4 @@
-<dsp-login>
+<dsp-signin>
   <header class="header header-brand ui-header">
 		<span class="header-logo">Resourcebox Accounts</span>
 	</header>
@@ -69,7 +69,10 @@
 	</div>
 
   <script type="babel">
-    console.log('dsp-login tag')
+    console.log('dsp-signin tag')
+    if (true) {
+      let pepe = 25;
+    }
   </script>
 
-</dsp-login>
+</dsp-signin>

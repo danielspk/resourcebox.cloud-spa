@@ -9,7 +9,6 @@ const imagemin     = require('gulp-imagemin');
 const minifycss    = require('gulp-minify-css');
 const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
-const streamify    = require('gulp-streamify');
 const uglify       = require('gulp-uglify');
 const riotify      = require('riotify');
 const source       = require('vinyl-source-stream');
@@ -28,6 +27,7 @@ gulp.task('styles', function() {
   return gulp.src(['src/styles/base.scss'])
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
+    .pipe(gulp.dest('tmp/css'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
     .pipe(gulp.dest('dist/css/'))
@@ -35,11 +35,11 @@ gulp.task('styles', function() {
 
 gulp.task('browserify', function() {
   return browserify('src/scripts/index.js')
-    .transform('babelify', { presets: ['es2015-riot'] })
+    .transform('babelify', { presets: ['es2015'] })
     .transform(riotify)
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest('tmp'));
+    .pipe(gulp.dest('tmp/js'));
 });
 
 gulp.task('scripts', ['browserify'], function() {
@@ -47,10 +47,10 @@ gulp.task('scripts', ['browserify'], function() {
       'node_modules/whatwg-fetch/fetch.js',
       'node_modules/jquery/dist/jquery.js',
       'node_modules/daemonite-material/js/base.js',
-      'tmp/bundle.js'
+      'tmp/js/bundle.js'
     ])
     .pipe(concat('app.min.js'))
-    .pipe(streamify(uglify()))
+    .pipe(uglify())
     .pipe(gulp.dest('dist/js'));
 });
 
