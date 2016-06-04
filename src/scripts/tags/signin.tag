@@ -1,7 +1,4 @@
-<dsp-signin>
-  <header class="header header-brand ui-header">
-		<span class="header-logo">Resourcebox Accounts</span>
-	</header>
+<signin-tag>
   <div class="container">
 		<div class="row">
 			<div class="col-lg-4 col-lg-push-4 col-sm-6 col-sm-push-3">
@@ -75,4 +72,4 @@
     }
   </script>
 
-</dsp-signin>
+</signin-tag>
