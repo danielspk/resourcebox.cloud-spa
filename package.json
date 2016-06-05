@@ -20,12 +20,8 @@
   "homepage": "https://github.com/danielspk/resourcebox.cloud-spa#readme",
   "dependencies": {
     "daemonite-material": "^1.4.0",
-    "delegate": "^3.0.1",
     "downloadjs": "^1.4.4",
-    "event-emitter": "^0.3.4",
-    "handlebars": "^4.0.5",
     "jquery": "^2.2.4",
-    "page": "^1.7.1",
     "riot": "^2.4.1",
     "whatwg-fetch": "^1.0.0"
   },

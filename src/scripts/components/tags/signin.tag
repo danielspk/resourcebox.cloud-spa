@@ -16,7 +16,7 @@
 										<img alt="Login" src="img/logo.png">
 									</span>
 								</p>
-								<form class="form" action="index.html">
+								<form class="form" action="" onsubmit={sendSignin}>
 									<div class="form-group form-group-label">
 										<div class="row">
 											<div class="col-md-10 col-md-push-1">
@@ -66,9 +66,9 @@
 	</div>
 
   <script type="babel">
-    console.log('dsp-signin tag')
-    if (true) {
-      let pepe = 25;
+    this.sendSignin = (e) => {
+      this.observable.trigger('sendSignin', 'username and password');
+      return false;
     }
   </script>
 

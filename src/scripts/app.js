@@ -4,15 +4,25 @@
 import riot from 'riot';
 
 // tags
-import './tags/header.tag';
-import './tags/signin.tag';
+import './components/tags/header.tag';
+import './components/tags/signin.tag';
 
 // pages
-import './pages/signin.tag';
+import './components/pages/signin.tag';
 
 // routes
 import './routes';
 
-window.onload = () => {
-  riot.mount('*');
-};
+// mixins
+import observable from './observable';
+
+// models
+
+
+
+// riot start
+riot.mixin(observable);
+riot.mount('*');
+riot.route.start(true);
+
+// models instances

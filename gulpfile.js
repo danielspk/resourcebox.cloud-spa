@@ -85,7 +85,6 @@ gulp.task('serve', function() {
 gulp.task('default', ['serve'], function(){
   gulp.watch('src/styles/**/*.scss', { debounceDelay: 3000 }, ['styles']);
   gulp.watch('src/scripts/**/*.js', { debounceDelay: 3000 }, ['scripts']);
-  gulp.watch('src/scripts/tags/**/*.tag', { debounceDelay: 3000 }, ['scripts']);
-  gulp.watch('src/scripts/pages/**/*.tag', { debounceDelay: 3000 }, ['scripts']);
+  gulp.watch('src/scripts/**/*.tag', { debounceDelay: 3000 }, ['scripts']);
   gulp.watch('src/**/*.html', { debounceDelay: 3000 }, ['html']);
 });
