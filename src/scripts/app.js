@@ -4,6 +4,7 @@
 import riot from 'riot';
 
 // tags
+import './components/tags/loader.tag';
 import './components/tags/header.tag';
 import './components/tags/signin.tag';
 

@@ -67,6 +67,7 @@
 
   <script type="babel">
     this.sendSignin = (e) => {
+      this.observable.trigger('loading.start');
       this.observable.trigger('sendSignin', 'username and password');
       return false;
     }
