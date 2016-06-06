@@ -55,7 +55,9 @@ gulp.task('scripts', ['browserify'], function() {
       'node_modules/daemonite-material/js/base.js',
       'tmp/js/bundle.js'
     ])
-    .pipe(concat('app.min.js'))
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('tmp/js'))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
     .pipe(connect.reload());

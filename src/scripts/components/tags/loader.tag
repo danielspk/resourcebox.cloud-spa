@@ -31,18 +31,8 @@
     });
   </script>
   
-  <style>
-    loader-tag {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-    }
-    loader-tag .progress {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    loader-tag .hidden {
+  <style scoped>
+    .hidden {
       display: none;
     }
   </style>

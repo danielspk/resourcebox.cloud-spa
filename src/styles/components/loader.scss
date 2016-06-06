@@ -1,0 +1,12 @@
+@import './var/colors';
+
+loader-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+loader-tag .progress {
+  margin-top: 0;
+  margin-bottom: 0;
+}
