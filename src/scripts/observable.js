@@ -3,12 +3,12 @@
 // dependencies
 import riot from 'riot';
 
-var signin = {
+var mixin = {
   observable: riot.observable()
 }
 
-signin.observable.on('sendSignin', function(data) {
+mixin.observable.on('sendSignin', function(data) {
   console.log('on sendSignin: ' + data);
 });
 
-module.exports = signin;
+module.exports = mixin;

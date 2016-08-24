@@ -1,24 +1,24 @@
 <loader-tag>
   <div id="progress" class="progress hidden">
     <div class="load-bar">
-        <div class="load-bar-base">
-            <div class="load-bar-content">
-                <div class="load-bar-progress"></div>
-                <div class="load-bar-progress load-bar-progress-brand"></div>
-                <div class="load-bar-progress load-bar-progress-green"></div>
-                <div class="load-bar-progress load-bar-progress-orange"></div>
-            </div>
+      <div class="load-bar-base">
+        <div class="load-bar-content">
+          <div class="load-bar-progress"></div>
+          <div class="load-bar-progress load-bar-progress-brand"></div>
+          <div class="load-bar-progress load-bar-progress-green"></div>
+          <div class="load-bar-progress load-bar-progress-orange"></div>
         </div>
+      </div>
     </div>
     <div class="load-bar">
-        <div class="load-bar-base">
-            <div class="load-bar-content">
-                <div class="load-bar-progress"></div>
-                <div class="load-bar-progress load-bar-progress-orange"></div>
-                <div class="load-bar-progress load-bar-progress-green"></div>
-                <div class="load-bar-progress load-bar-progress-brand"></div>
-            </div>
+      <div class="load-bar-base">
+        <div class="load-bar-content">
+          <div class="load-bar-progress"></div>
+          <div class="load-bar-progress load-bar-progress-orange"></div>
+          <div class="load-bar-progress load-bar-progress-green"></div>
+          <div class="load-bar-progress load-bar-progress-brand"></div>
         </div>
+      </div>
     </div>
   </div>
   
