@@ -1,8 +1,8 @@
 <menu-tag>
   <ul class="nav navbar-nav">
-    <li class={active: is.panel}><a href="#/panel">Main Panel</a></li>
-    <li class={active: is.about}><a href="#/about">About</a></li>
-    <li class={active: is.contact}><a href="#/contact">Contact</a>
+    <li class={ active: is.panel }><a href="#/panel">Main Panel { example }</a></li>
+    <li class={ active: is.about }><a href="#/about">About</a></li>
+    <li class={ active: is.contact }><a href="#/contact">Contact</a>
   </ul>
 
   <script type="babel">
@@ -11,22 +11,29 @@
       about: false, 
       contact: false
     };
+    
+    this.example = "example";
 
-    this.observable.on('route.changed', (routeName) => {
-      routeName = routeName.replace("-page", "");
-
-      if (this.is[routeName] !== undefined) {
+    this.changeNav = (route) => {
+      route = route.replace("-page", "");
+      console.log(route);
+      if (this.is[route] !== undefined) {
         for (let r in this.is) {
-          this.is[r] = (r === routeName);
+          this.is[r] = (r === route);
         }
       }
-      
-      this.update();
-    });
+      this.example = "example 2";
+      //this.update();
+    };
 
-    this.on('unmount', function() {
-      this.observable.off('route.changed');
+    this.on('mount', () => {
+      console.log('mount');
+      this.observable.on('route.changed', this.changeNav);
     })
+
+    this.on('unmount', () => {
+      this.observable.off('route.changed');
+    });
   </script>
 
 </menu-tag>

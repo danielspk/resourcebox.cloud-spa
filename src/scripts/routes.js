@@ -8,12 +8,12 @@ let authenticated = false;
 
 function renderPage(page) {
   if (window.location.hash && !authenticated) {
-    return riot.route('/');
+    //return riot.route('/');
   }
 
-  mixin.observable.trigger('route.changed', page);
+  riot.mount('#main', page);
 
-  return riot.mount('#main', page);
+  mixin.observable.trigger('route.changed', page);  
 }
 
 riot.route('/', () => renderPage('signin-page'));

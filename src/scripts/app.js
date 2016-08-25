@@ -10,6 +10,8 @@ import './components/tags/menu.tag';
 import './components/tags/signin.tag';
 
 // pages
+import './components/pages/about.tag';
+import './components/pages/contact.tag';
 import './components/pages/panel.tag';
 import './components/pages/signin.tag';
 
@@ -25,7 +27,7 @@ import observable from './observable';
 
 // riot start
 riot.mixin(observable);
-riot.mount('*');
+//riot.mount('*');
 riot.route.start(true);
 
 // models instances
