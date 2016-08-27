@@ -23,12 +23,25 @@
   </div>
   
   <script type="babel">
-    this.observable.on('loading.start', () => {
+    
+    this.showProgress = () => {
       this.progress.classList.remove('hidden');
-    });
-    this.observable.on('loading.end', () => {
+    };
+
+    this.hideProgress = () => {
       this.progress.classList.add('hidden');
+    };
+
+    this.on('mount', () => {
+      this.observable.on('loader.start', this.showProgress);
+      this.observable.on('loader.end', this.hideProgress);
+    })
+
+    this.on('unmount', () => {
+      this.observable.off('loader.start');
+      this.observable.off('loader.end');
     });
+
   </script>
   
   <style scoped>

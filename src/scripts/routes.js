@@ -3,12 +3,11 @@
 // dependencies
 import riot from 'riot';
 import mixin from './observable';
-
-let authenticated = false;
+import Security from './security';
 
 function renderPage(page) {
-  if (window.location.hash && !authenticated) {
-    //return riot.route('/');
+  if (window.location.hash && !Security.isAuthenticated()) {
+    return riot.route('/');
   }
 
   riot.mount('#main', page);

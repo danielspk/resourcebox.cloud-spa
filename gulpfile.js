@@ -79,7 +79,7 @@ gulp.task('build', ['styles', 'scripts', 'html', 'fonts', 'images']);
 gulp.task('serve', function() {
   connect.server({
     root: ['dist'],
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 3030,
     livereload: true
   });
 });
