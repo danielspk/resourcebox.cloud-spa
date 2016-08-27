@@ -12,7 +12,7 @@
       contact: false
     };
     
-    this.example = "example";
+    this.example = "route initial";
 
     this.changeNav = (route) => {
       route = route.replace("-page", "");
@@ -22,13 +22,14 @@
           this.is[r] = (r === route);
         }
       }
-      this.example = "example 2";
-      //this.update();
+      this.example = "route is " + route;
+      this.update();
     };
 
     this.on('mount', () => {
       console.log('mount');
       this.observable.on('route.changed', this.changeNav);
+      //setTimeout(() => { this.observable.trigger('route.changed', 'setTimeout'); }, 1500);
     })
 
     this.on('unmount', () => {
