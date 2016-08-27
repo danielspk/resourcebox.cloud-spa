@@ -40,18 +40,6 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-md-10 col-md-push-1">
-												<div class="checkbox checkbox-adv">
-													<label for="ui_login_remember">
-														<input class="access-hide" id="ui_login_remember" name="ui_login_remember" type="checkbox">Stay signed in
-														<span class="checkbox-circle"></span><span class="checkbox-circle-check"></span><span class="checkbox-circle-icon icon">done</span>
-													</label>
-												</div>
-											</div>
-										</div>
-									</div>
 								</form>
 							</div>
 						</div>

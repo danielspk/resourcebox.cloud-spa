@@ -1,9 +1,8 @@
 <signin-page>
-  <header-tag title="Resourcebox Accounts"></header-tag>
+  <title-tag title="Resourcebox Accounts"></title-tag>
   <signin-tag></signin-tag>
 
   <script type="babel">
-
     import settings from './../../settings';
     import Security from './../../security';
 
@@ -63,7 +62,6 @@
     this.on('unmount', () => {
       this.observable.off('signin.submit');
     });
-
   </script>
 
 </signin-page>

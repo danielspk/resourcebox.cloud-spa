@@ -12,6 +12,9 @@ class Security {
   static getAuthentication() {
     return sessionStorage.getItem(SESSION_KEY);
   }
+  static removeAuthentication() {
+    sessionStorage.removeItem(SESSION_KEY);
+  }
 }
 
 module.exports = Security;
