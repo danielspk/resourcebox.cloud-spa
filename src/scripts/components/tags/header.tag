@@ -1,26 +1,23 @@
 <header-tag>
   <header class="header header-brand ui-header">
-
-    <ul class="nav nav-list pull-left">
+    <ul if={ opts.links.menu } class="nav nav-list pull-left">
 	  <li>
         <a data-toggle="menu" href="#ui_menu">
           <span class="icon icon-lg">menu</span>
         </a>
       </li>
     </ul>
-
     <span class="header-logo">{opts.title}</span>
-
-    <ul class="nav nav-list pull-right">
+    <ul if={ opts.links.avatar } class="nav nav-list pull-right">
 	  <li class="dropdown margin-right">
 	    <a class="dropdown-toggle padding-left-no padding-right-no" data-toggle="dropdown" aria-expanded="false">
 		  <span class="access-hide">User account</span>
 		  <span class="avatar avatar-sm">
-		    <img alt="alt text for user account" src="img/avatar-001.jpg">
+		    <img alt="alt text for user account" src={ opts.links.avatar.src }>
 		  </span>
 		</a>
 		<ul class="dropdown-menu dropdown-menu-right">
-		  <li each={ opts.links.avatar }>
+		  <li each={ opts.links.avatar.links }>
 		    <a class="padding-right-lg waves-attach waves-effect" href={ href }>
 			  <span class="icon icon-lg margin-right">{ icon }</span>{ name }
 			</a>
@@ -28,10 +25,8 @@
 		</ul>
 	  </li>
 	</ul>
-
   </header>
-
-  <nav aria-hidden="true" class="menu" id="ui_menu" tabindex="-1">
+  <nav if={ opts.links.menu } aria-hidden="true" class="menu" id="ui_menu" tabindex="-1">
     <div class="menu-scroll">
       <div class="menu-content">
         <a class="menu-logo" href="index.html">Menu</a>
@@ -48,5 +43,11 @@
 	  </div>
 	</div>
   </nav>
+
+  <script type="babel">
+    this.on('unmount', () => {
+      $('.menu-backdrop').remove();
+    });
+  </script>
 
 </header-tag>
