@@ -1,5 +1,5 @@
 <header-tag>
-  <header class="header header-brand ui-header">
+  <header class="header header-transparent header-waterfall affix-top ui-header">
     <ul if={ opts.links.menu } class="nav nav-list pull-left">
 	  <li>
         <a data-toggle="menu" href="#ui_menu">
