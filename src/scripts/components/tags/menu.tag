@@ -7,6 +7,8 @@
 
   <script>
 
+    // TODO: editar para que sea un tag reutilizable (hoy tiene link harcodeados)
+
     this.is = {
       panel: false,
       about: false,
