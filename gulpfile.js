@@ -3,11 +3,11 @@
 const browserify   = require('browserify');
 const gulp         = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
+const cleancss     = require('gulp-clean-css');
 const concat       = require('gulp-concat');
 const connect      = require('gulp-connect');
 const gulpif       = require('gulp-if');
 const imagemin     = require('gulp-imagemin');
-const minifycss    = require('gulp-minify-css');
 const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
 const uglify       = require('gulp-uglify');
@@ -31,7 +31,7 @@ gulp.task('styles', function() {
     .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
     .pipe(gulp.dest('tmp/css'))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(minifycss())
+    .pipe(cleancss())
     .pipe(gulp.dest('dist/css/'))
     .pipe(connect.reload());
 });
