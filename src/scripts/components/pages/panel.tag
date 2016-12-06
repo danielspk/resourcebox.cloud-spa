@@ -78,12 +78,14 @@
   </div>
 
   <script>
+
     import settings from './../../settings';
 
     this.header = {
       title: 'Resourcebox Accounts - Panel',
       links: settings.menu
     };
+
   </script>
 
 </panel-page>

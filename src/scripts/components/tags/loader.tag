@@ -21,9 +21,9 @@
       </div>
     </div>
   </div>
-  
+
   <script>
-    
+
     this.showProgress = () => {
       this.refs.progress.classList.remove('hidden');
     };
@@ -43,11 +43,13 @@
     });
 
   </script>
-  
+
   <style scoped>
+
     .hidden {
       display: none;
     }
+
   </style>
-  
+
 </loader-tag>

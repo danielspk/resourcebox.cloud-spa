@@ -58,12 +58,14 @@
 			e.preventDefault();
 
 			let data = {
-				username: this.refs.modelUsername.value, 
+				username: this.refs.modelUsername.value,
 				password: this.refs.modelPassword.value
 			};
 
       this.observable.trigger('signin.submit', data);
-			
+
+      this.refs.modelPassword.value = '';
+
       return false;
     }
 

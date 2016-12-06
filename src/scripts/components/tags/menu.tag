@@ -6,12 +6,13 @@
   </ul>
 
   <script>
+
     this.is = {
       panel: false,
-      about: false, 
+      about: false,
       contact: false
     };
-    
+
     this.example = "route initial";
 
     this.changeNav = (route) => {
@@ -35,6 +36,7 @@
     this.on('unmount', () => {
       this.observable.off('route.changed');
     });
+
   </script>
 
 </menu-tag>

@@ -5,6 +5,7 @@ const gulp         = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const concat       = require('gulp-concat');
 const connect      = require('gulp-connect');
+const gulpif       = require('gulp-if');
 const imagemin     = require('gulp-imagemin');
 const minifycss    = require('gulp-minify-css');
 const rename       = require('gulp-rename');
@@ -58,7 +59,7 @@ gulp.task('scripts', ['browserify'], function() {
     .pipe(concat('app.js'))
     .pipe(gulp.dest('tmp/js'))
     .pipe(rename({ suffix: '.min' }))
-    //.pipe(uglify())
+    .pipe(gulpif(process.env.NODE_ENV === 'production', uglify()))
     .pipe(gulp.dest('dist/js'))
     .pipe(connect.reload());
 });

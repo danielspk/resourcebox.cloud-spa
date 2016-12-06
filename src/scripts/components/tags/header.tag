@@ -45,9 +45,11 @@
   </nav>
 
   <script>
+
     this.on('unmount', () => {
       $('.menu-backdrop').remove();
     });
+
   </script>
 
 </header-tag>

@@ -3,6 +3,8 @@
   <signin-tag></signin-tag>
 
   <script>
+
+    import route from 'riot-route';
     import settings from './../../settings';
     import Security from './../../security';
 
@@ -46,7 +48,7 @@
 
           Security.storeAuthentication(json.access_token);
 
-          riot.route('panel');
+          route('panel');
         })
         .catch((err) => {
           this.observable.trigger('loader.end');
@@ -62,6 +64,7 @@
     this.on('unmount', () => {
       this.observable.off('signin.submit');
     });
+
   </script>
 
 </signin-page>
