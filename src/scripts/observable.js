@@ -7,8 +7,9 @@ var mixin = {
   observable: riot.observable()
 }
 
-mixin.observable.on('sendSignin', function(data) {
-  console.log('on sendSignin: ' + data);
+// TODO: no se respeta el orden de invocación de emisiones
+mixin.observable.on('*', (event, args) => {
+  console.log('Emmit: `' + event + '` ', args || null);
 });
 
 module.exports = mixin;
