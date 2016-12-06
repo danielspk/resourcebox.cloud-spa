@@ -77,7 +77,7 @@
     </div>
   </div>
 
-  <script type="babel">
+  <script>
     import settings from './../../settings';
 
     this.header = {

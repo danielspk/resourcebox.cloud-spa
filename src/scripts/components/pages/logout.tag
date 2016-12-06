@@ -1,7 +1,8 @@
 <logout-page>
   
-  <script type="babel">
+  <script>
 
+    import route from 'riot-route';
     import Security from './../../security';
 
     this.observable.trigger('loader.start');
@@ -11,7 +12,7 @@
     setTimeout(() => {
       this.observable.trigger('loader.end');
 
-      riot.route('/');
+      route('/');
     }, 1200);
 
   </script>

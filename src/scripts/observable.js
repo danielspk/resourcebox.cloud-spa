@@ -1,7 +1,7 @@
 'use strict';
 
 // dependencies
-import riot from 'riot';
+import * as riot from 'riot';
 
 var mixin = {
   observable: riot.observable()

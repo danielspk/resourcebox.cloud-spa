@@ -21,7 +21,7 @@
 										<div class="row">
 											<div class="col-md-10 col-md-push-1">
 												<label class="floating-label" for="modelUsername">Username</label>
-												<input class="form-control" id="modelUsername" type="text">
+												<input class="form-control" id="modelUsername" ref="modelUsername" type="text">
 											</div>
 										</div>
 									</div>
@@ -29,7 +29,7 @@
 										<div class="row">
 											<div class="col-md-10 col-md-push-1">
 												<label class="floating-label" for="modelPassword">Password</label>
-												<input class="form-control" id="modelPassword" type="password">
+												<input class="form-control" id="modelPassword" ref="modelPassword" type="password">
 											</div>
 										</div>
 									</div>
@@ -52,12 +52,14 @@
 		</div>
 	</div>
 
-  <script type="babel">
+  <script>
 
     this.sendSignin = (e) => {
+			e.preventDefault();
+
 			let data = {
-				username: this.modelUsername.value, 
-				password: this.modelPassword.value
+				username: this.refs.modelUsername.value, 
+				password: this.refs.modelPassword.value
 			};
 
       this.observable.trigger('signin.submit', data);

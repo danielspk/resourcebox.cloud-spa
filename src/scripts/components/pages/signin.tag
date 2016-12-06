@@ -2,7 +2,7 @@
   <title-tag title="Resourcebox Accounts"></title-tag>
   <signin-tag></signin-tag>
 
-  <script type="babel">
+  <script>
     import settings from './../../settings';
     import Security from './../../security';
 

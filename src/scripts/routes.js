@@ -1,26 +1,27 @@
 'use strict';
 
 // dependencies
-import riot from 'riot';
+import * as riot from 'riot';
+import route from 'riot-route';
 import mixin from './observable';
 import Security from './security';
 
 function renderPage(page) {
   if (window.location.hash && !Security.isAuthenticated()) {
-    return riot.route('/');
+    return route('/');
   }
 
   riot.mount('#main', page);
 }
 
-riot.route('/', () => renderPage('signin-page'));
-riot.route('/panel', () => renderPage('panel-page'));
-riot.route('/detail', () => renderPage('detail-page'));
-riot.route('/about', () => renderPage('about-page'));
-riot.route('/logout', () => renderPage('logout-page'));
+route('/', () => renderPage('signin-page'));
+route('/panel', () => renderPage('panel-page'));
+route('/detail', () => renderPage('detail-page'));
+route('/about', () => renderPage('about-page'));
+route('/logout', () => renderPage('logout-page'));
 
-riot.route(() => {
+route(() => {
   console.log('404');
 });
 
-module.exports = riot;
+module.export = { riot, route };

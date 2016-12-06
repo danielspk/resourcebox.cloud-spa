@@ -1,5 +1,5 @@
 <loader-tag>
-  <div id="progress" class="progress hidden">
+  <div id="progress" ref="progress" class="progress hidden">
     <div class="load-bar">
       <div class="load-bar-base">
         <div class="load-bar-content">
@@ -22,14 +22,14 @@
     </div>
   </div>
   
-  <script type="babel">
+  <script>
     
     this.showProgress = () => {
-      this.progress.classList.remove('hidden');
+      this.refs.progress.classList.remove('hidden');
     };
 
     this.hideProgress = () => {
-      this.progress.classList.add('hidden');
+      this.refs.progress.classList.add('hidden');
     };
 
     this.on('mount', () => {

@@ -38,7 +38,7 @@ gulp.task('styles', function() {
 gulp.task('browserify', function() {
   return browserify('src/scripts/app.js')
     .transform('babelify')
-    .transform(riotify)
+    .transform(riotify, { type: 'es6' })
     .bundle()
     .on('error', function (err) {
       console.log(err.toString());
@@ -58,7 +58,7 @@ gulp.task('scripts', ['browserify'], function() {
     .pipe(concat('app.js'))
     .pipe(gulp.dest('tmp/js'))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest('dist/js'))
     .pipe(connect.reload());
 });

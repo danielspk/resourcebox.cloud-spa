@@ -1,7 +1,8 @@
 'use strict';
 
 // dependencies
-import riot from 'riot';
+import * as riot from 'riot';
+import route from 'riot-route';
 
 // tags
 import './components/tags/header.tag';
@@ -25,4 +26,6 @@ import observable from './observable';
 // riot start
 riot.mixin(observable);
 riot.mount('*');
-riot.route.start(true);
+
+// routes start
+route.start(true);

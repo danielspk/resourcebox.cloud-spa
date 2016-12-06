@@ -5,7 +5,7 @@
     <li class={ active: is.contact }><a href="#/contact">Contact</a>
   </ul>
 
-  <script type="babel">
+  <script>
     this.is = {
       panel: false,
       about: false, 

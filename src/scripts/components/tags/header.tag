@@ -44,7 +44,7 @@
 	</div>
   </nav>
 
-  <script type="babel">
+  <script>
     this.on('unmount', () => {
       $('.menu-backdrop').remove();
     });
